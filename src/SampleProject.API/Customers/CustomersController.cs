@@ -1,8 +1,10 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SampleProject.Application.Customers;
+using SampleProject.Application.Customers.GetCustomerDetails;
 using SampleProject.Application.Customers.RegisterCustomer;
 
 namespace SampleProject.API.Customers
@@ -29,6 +31,16 @@ namespace SampleProject.API.Customers
            var customer = await _mediator.Send(new RegisterCustomerCommand(request.Email, request.Name));
 
            return Created(string.Empty, customer);
-        }       
+        }
+
+
+        [HttpGet]
+        [ProducesResponseType(typeof(CustomerDto), (int)HttpStatusCode.OK)]
+
+        public async Task <IActionResult> GetCustomerId()
+        {
+            
+            return Ok(new CustomerDto { Id = Guid.NewGuid()});
+        }
     }
 }
