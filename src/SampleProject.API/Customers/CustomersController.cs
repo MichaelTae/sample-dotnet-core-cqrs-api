@@ -23,6 +23,8 @@ namespace SampleProject.API.Customers
         /// <summary>
         /// Register customer.
         /// </summary>
+        
+        
         [Route("")]
         [HttpPost]
         [ProducesResponseType(typeof(CustomerDto), (int)HttpStatusCode.Created)]
@@ -34,13 +36,20 @@ namespace SampleProject.API.Customers
         }
 
 
-        [HttpGet("id")]
+        
+        [HttpDelete]      
+        public async Task <IActionResult> DeleteCustomer(Guid id)
+        {
+            return Ok(id);
+        }
+
+        [HttpGet]
         [ProducesResponseType(typeof(CustomerDto), (int)HttpStatusCode.OK)]
 
-        public async Task <IActionResult> GetCustomerById(int id)
-        {
+        public async Task <IActionResult> GetCustomer()
+         {
             
             return Ok(new CustomerDto { Id = Guid.NewGuid()});
-        }
+         }
     }
 }
