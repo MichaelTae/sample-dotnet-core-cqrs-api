@@ -34,10 +34,10 @@ namespace SampleProject.API.Customers
         }
 
 
-        [HttpGet]
+        [HttpGet("id")]
         [ProducesResponseType(typeof(CustomerDto), (int)HttpStatusCode.OK)]
 
-        public async Task <IActionResult> GetCustomerId()
+        public async Task <IActionResult> GetCustomerById(int id)
         {
             
             return Ok(new CustomerDto { Id = Guid.NewGuid()});
