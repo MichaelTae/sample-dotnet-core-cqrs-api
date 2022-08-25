@@ -37,8 +37,8 @@ namespace SampleProject.API.Customers
 
 
         
-        [HttpDelete]      
-        public async Task <IActionResult> DeleteCustomer(Guid id)
+        [HttpGet]      
+        public async Task <IActionResult> GetSpecificCustomer(Guid id)
         {
             return Ok(id);
         }
